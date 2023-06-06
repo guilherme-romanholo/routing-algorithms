@@ -1,0 +1,8 @@
+//
+// Created by guilherme on 06/06/23.
+//
+
+#ifndef ROUTINGALGORITHMS_GRAPH_H
+#define ROUTINGALGORITHMS_GRAPH_H
+
+#endif //ROUTINGALGORITHMS_GRAPH_H

@@ -1,0 +1,8 @@
+//
+// Created by guilherme on 06/06/23.
+//
+
+#ifndef ROUTINGALGORITHMS_ROUTER_H
+#define ROUTINGALGORITHMS_ROUTER_H
+
+#endif //ROUTINGALGORITHMS_ROUTER_H
