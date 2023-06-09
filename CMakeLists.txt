@@ -3,4 +3,4 @@ project(RoutingAlgorithms C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(RoutingAlgorithms src/main/main.c)
+add_executable(RoutingAlgorithms src/main/main.c include/ip.h src/components/ip.c)

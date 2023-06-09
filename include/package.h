@@ -5,4 +5,6 @@
 #ifndef ROUTINGALGORITHMS_PACKAGE_H
 #define ROUTINGALGORITHMS_PACKAGE_H
 
+typedef struct package package_t;
+
 #endif //ROUTINGALGORITHMS_PACKAGE_H

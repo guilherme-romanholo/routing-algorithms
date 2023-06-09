@@ -5,4 +5,6 @@
 #ifndef ROUTINGALGORITHMS_HOSTS_H
 #define ROUTINGALGORITHMS_HOSTS_H
 
+typedef struct host host_t;
+
 #endif //ROUTINGALGORITHMS_HOSTS_H
