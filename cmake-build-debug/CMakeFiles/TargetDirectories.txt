@@ -1,3 +1,0 @@
-/home/willao/Documentos/GitHub/RoutingAlgorithms/cmake-build-debug/CMakeFiles/RoutingAlgorithms.dir
-/home/willao/Documentos/GitHub/RoutingAlgorithms/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/willao/Documentos/GitHub/RoutingAlgorithms/cmake-build-debug/CMakeFiles/rebuild_cache.dir

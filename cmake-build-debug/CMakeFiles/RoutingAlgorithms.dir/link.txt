@@ -1,1 +1,0 @@
-/usr/bin/cc -g -rdynamic CMakeFiles/RoutingAlgorithms.dir/src/main/main.c.o CMakeFiles/RoutingAlgorithms.dir/src/components/ip.c.o -o RoutingAlgorithms 
