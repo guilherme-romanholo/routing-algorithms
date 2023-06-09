@@ -1,0 +1,15 @@
+
+*.cmake
+CMakeCache.txt
+*.bin
+*.out
+CMakeFiles/3.26.4/CompilerIdC/CMakeCCompilerId.c
+*.check_cache
+*.yaml
+CMakeFiles/Makefile2
+*.marks
+*.make
+*.ts
+CMakeFiles/RoutingAlgorithms.dir/link.txt
+CMakeFiles/TargetDirectories.txt
+Makefile
