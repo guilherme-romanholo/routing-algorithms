@@ -27,9 +27,9 @@ ip_t *initialize_ip(unsigned int mask, unsigned int mask2) {
 
     new_ip->oct1 = mask;
     new_ip->oct2 = mask2;
-    new_ip->oct3 = (ip_counter - 1) / 256;
-    new_ip->oct4 = (ip_counter - 1) % 256;
-    new_ip->key = new_ip->oct3 + new_ip->oct4;
+    new_ip->oct3 = (ip_counter - 2) / 256;
+    new_ip->oct4 = (ip_counter - 2) % 256;
+    new_ip->key = (new_ip->oct3 * 255) + new_ip->oct4;
 
     ip_counter++;
 
