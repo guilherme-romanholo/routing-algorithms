@@ -4,7 +4,9 @@
 
 #ifndef ROUTINGALGORITHMS_HOSTS_H
 #define ROUTINGALGORITHMS_HOSTS_H
-
-typedef struct host host_t;
-
+#include "ip.h"
+typedef struct host {
+    char hostname[50];
+    ip_t *host_ip;
+} host_t;
 #endif //ROUTINGALGORITHMS_HOSTS_H

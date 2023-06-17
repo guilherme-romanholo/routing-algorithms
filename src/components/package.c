@@ -2,7 +2,8 @@
 
 #include "../../include/package.h"
 #include "../../include/ip.h"
-
+#include<stdio.h>
+#include<stdlib.h>
 struct package {
     // Identificador do pacote
     int id;
@@ -12,4 +13,4 @@ struct package {
     ip_t *source_ip;
     // Endereço de destino
     ip_t *destination_ip;
-};
+} ;

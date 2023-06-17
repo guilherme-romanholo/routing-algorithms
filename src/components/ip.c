@@ -6,15 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct ip {
-    // Chave para a matriz de adjacencia
-    int key;
-    // Octetos de um ip, ex: 192.160.0.5
-    unsigned int oct1;
-    unsigned int oct2;
-    unsigned int oct3;
-    unsigned int oct4;
-};
+
 
 // Considerando uma rede com máscara /16, ou seja, passamos a máscara da rede
 // por exemplo: 192.168.0.0 , assim ele realizará automáticamente o endereçamento
