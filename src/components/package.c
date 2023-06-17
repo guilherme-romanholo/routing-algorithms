@@ -4,13 +4,3 @@
 #include "../../include/ip.h"
 #include<stdio.h>
 #include<stdlib.h>
-struct package {
-    // Identificador do pacote
-    int id;
-    // Tamanho do pacote (kb) / Peso da aresta
-    int size;
-    // Endereço de origem
-    ip_t *source_ip;
-    // Endereço de destino
-    ip_t *destination_ip;
-} ;

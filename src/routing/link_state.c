@@ -2,18 +2,20 @@
 
 #include "../../include/link_state.h"
 
-void link_state(int ***matrix, package_t *packages, int routers, int number_packages)
+void link_state(int routers,int matrix[][routers], package_t *packages,  int number_packages)
 {
     int i;
+
     for (i = 0; i < number_packages; i++)
     {
-        printMatrix(*matrix, routers);
-        dijkstra(matrix, routers, packages[i]);
+
+        printMatrix(routers, matrix);
+        dijkstra(routers, matrix, packages[i]);
     }
-    printMatrix(*matrix, routers);
+    printMatrix(routers, matrix);
 }
 
-void dijkstra(int ***matrix, int routers, package_t package)
+void dijkstra(int routers, int matrix[][routers],  package_t package)
 {
     // int cost[routers][routers];
     int count, mindistance;
@@ -41,9 +43,9 @@ void dijkstra(int ***matrix, int routers, package_t package)
 
     for (i = 0; i < routers; i++)
     {
-        if (*matrix[origin][i] > 0)
+        if (matrix[origin][i] > 0)
         {
-            distance[i] = *matrix[origin][i];
+            distance[i] = matrix[origin][i];
         }
         else
         {
@@ -74,9 +76,9 @@ void dijkstra(int ***matrix, int routers, package_t package)
         {
             if (visited[i] == 0)
             {
-                if (*matrix[last_visited][i] > 0 && mindistance + *matrix[last_visited][i] < distance[i])
+                if (matrix[last_visited][i] > 0 && mindistance + matrix[last_visited][i] < distance[i])
                 {
-                    distance[i] = mindistance + *matrix[last_visited][i];
+                    distance[i] = mindistance + matrix[last_visited][i];
                     previous[i] = last_visited;
                 }
             }
@@ -96,23 +98,24 @@ void dijkstra(int ***matrix, int routers, package_t package)
     {
         j = path[i];
         k = path[i - 1];
-        *matrix[j][k] += package.size;
+        matrix[j][k] += package.size;
     }
 
     print_path(path, count);
 }
 
-void printMatrix(int **matrix, int routers)
+void printMatrix(int routers, int matrix[][routers])
 {
     int i, j;
     for (i = 0; i < routers; i++)
     {
         for (j = 0; j < routers; j++)
         {
-            printf("%d", matrix[i][j]);
+            printf("%d ", matrix[i][j]);
         }
         printf("\n");
     }
+    printf("\n");
     printf("\n");
 }
 
@@ -120,6 +123,9 @@ void print_path(int *path, int count)
 {
     while (count--)
     {
-        printf("%d <- ", path[count]);
+        printf("%d", path[count]);
+        if(count)
+            printf("->");
     }
+    printf("\n");
 }

@@ -6,8 +6,6 @@
 #define ROUTINGALGORITHMS_IP_H
 
 
-ip_t *initialize_ip(unsigned int mask, unsigned int mask2);
-void print_ip(ip_t *ip);
 
 
 typedef struct ip {
@@ -20,4 +18,6 @@ typedef struct ip {
     unsigned int oct4;
 }ip_t;
 
+ip_t *initialize_ip(unsigned int mask, unsigned int mask2);
+void print_ip(ip_t *ip);
 #endif //ROUTINGALGORITHMS_IP_H

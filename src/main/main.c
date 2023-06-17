@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../../include/link_state.h";
+#include "../../include/link_state.h"
 
 int main() {
     printf("TUBARAO TE AMO \n");
@@ -25,7 +25,7 @@ int main() {
     packages[1].destination_ip = &dest;
     packages[1].size = 1;
 
-    link_state(&matriz, packages, 4, 2);
+    link_state( 4, matriz, packages,  2);
 
     return 0;
 }
