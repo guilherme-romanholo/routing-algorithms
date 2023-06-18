@@ -11,16 +11,7 @@
 
 //EDs para nó e grafo
 //----------------------------------
-struct package {
-	int id; // ID do package
-	char commit[100]; // Comentarios a respeito
-    int tempo; // Seconds
-    int IPDestino; // IP destino
-    int peso; // Peso do pacote
-    struct package *prox; // Proximo package
-};
 
-typedef struct package *Package;
 
 /**
  * Tipos:
