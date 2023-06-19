@@ -1,97 +1,81 @@
-//// Código fonte para implementação do grafo
-//
-//#include "../../include/graph.h"
-//#include <stdio.h>
-//#include <stdlib.h>
-//
-//// Cria um nó do grafo
-//Package criaPackage (int id, char *commit, int tempo, int IPDestino, int peso) {
-//	Package n = (Package) malloc(sizeof(struct package));
-//
-//    n->id = id;
-//	strcpy(n->commit, commit);
-//    n-> tempo;
-//    n-> IPDestino;
-//    n-> peso;
-//    n->prox = NULL;
-//
-//    return n;
-//}
-//
-//// Adiciona um nó Package grafo
-//void addPackage (Package n, int id, char *commit, int tempo, int IPDestino, int peso) {
-//	Package aux = criaPackage(id, commit, tempo, IPDestino, peso);
-//	if(n == NULL)
-//		return;
-//
-//	while(n->prox != NULL)
-//		n = n->prox;
-//
-//	n->prox = aux;
-//}
-//
-//// Imprime a lista de todos os nós adjacentes ao nó corrente n
-//void imprimePackage(Package n){
-//	while(n != NULL){
-//		printf("-> (ID: %d, Commit: %s, Tempo: %d, IP Destino: %d, Peso: %d)", n->id, n->commit, n-> tempo, n->IPDestino, n->peso);
-//		n = n->prox;
-//    }
-//}
-//
-//// Define uma maquina vazia
-//Maquina criaMaquina(char *tipo){
-//	Maquina G = (Maquina) malloc(sizeof(struct maquina));
-//
-//	G->nPackage = 0;
-//    G->IP = IPAtual++;
-//	strcpy(G->tipo, tipo);
-//    G->vertices = NULL;
-//    G->contido = NULL;
-//
-//	return G;
-//}
-//
-//// Efetuar a leitura do grafo via arquivo e retorna a matriz adjacente
-//int **readMaquina(char *nomeArq) {
-//  /* Pegar um codigo melhor, o meu esta uma carniça
-//
-//  FILE *fp;
-//  char buffer[tam_fila];
-//  int **aux;
-//  int nPackage, i, j, o, d, val;
-//  fp = fopen(nomeArq, "r");
-//
-//  fgets(buffer, tam_fila, fp);
-//  sscanf(buffer, "%d", &nPackage);
-//
-//  // Inicializa matriz adjacencia
-//  aux = (int **)malloc(nPackage * sizeof(int *));
-//  for (i = 0; i < maxIPs; i++) {
-//    aux[i] = (int *)malloc(maxIPs * sizeof(int));
-//    for (j = 0; j < maxIPs; j++)
-//      aux[i][j] = 0;
-//
-//  }
-//
-//  // Leitura dos arquivos de texto
-//  while (!feof(fp)) {
-//    fgets(buffer, tam_fila, fp);
-//    sscanf(buffer, "%d %d %d", &o, &d, &val);
-//    aux[o][d] = val;
-//  }
-//
-//  fclose(fp);
-//
-//  return aux;*/
-//}
-//
-////Imprime o grafo a partir das listas de adjacencia
-//void printMaquina(Maquina G) {
-//	int i;
-//	printf("\nGrafo - Lista de Adjacencia\n\n");
-//	for(i = 0; i < G->nPackage; i++){
-//		printf("(%d)", (G->vertices + i)->id);
-//		imprimePackage((G->vertices + i));
-//		printf("\n");
-//	}
-//}
+// Código fonte para implementação do grafo
+#include "../../include/graph.h"
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+graph_t *initialize_graph(const char *filename) {
+  FILE *fp = fopen(filename, "r");
+  int source, destination, weight;
+  graph_t *graph = malloc(sizeof(graph_t));
+
+  fscanf(fp, "%d", &(graph->numNodes));
+
+  graph->matrix = initialize_matrix(graph->numNodes);
+  graph->numEdges = 0;
+
+  while (fscanf(fp, "%d %d %d", &source, &destination, &weight) != EOF){
+    graph->matrix[source][destination] = weight;
+    graph->numEdges++;
+  }
+
+  fclose(fp);
+
+  return graph;
+}
+
+void print_graph(graph_t *graph) {
+  for (int i = 0; i < graph->numNodes; i++) {
+    for (int j = 0; j < graph->numNodes; j++) {
+      if (graph->matrix[i][j] == INT_MAX)
+        printf("- ");
+      else
+        printf("%d ", graph->matrix[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+void free_graph(graph_t *graph) {
+  for (int i = 0; i < graph->numNodes; i++) {
+    free(graph->matrix[i]);
+  }
+  free(graph->matrix);
+  free(graph);
+}
+
+int **initialize_matrix(int n) {
+  int **matrix = malloc(sizeof(int *) * n);
+
+  for (int i = 0; i < n; i++)
+    matrix[i] = malloc(sizeof(int) * n);
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      if (i == j)
+        matrix[i][j] = 0;
+      else
+        matrix[i][j] = INT_MAX;
+    }
+  }
+
+  return matrix;
+}
+
+edge_t *graph_to_edges(graph_t *graph) {
+  edge_t *edges = malloc(sizeof(edge_t) * graph->numEdges);
+  int n = 0;
+
+  for (int i = 0; i < graph->numNodes; i++) {
+    for (int j = 0; j < graph->numNodes; j++) {
+      if(graph->matrix[i][j] != 0 && graph->matrix[i][j] != INT_MAX) {
+        edges[n].source = i;
+        edges[n].destination = j;
+        edges[n].weight = graph->matrix[i][j];
+        n++;
+      }
+    }
+  }
+
+  return edges;
+}

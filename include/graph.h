@@ -4,40 +4,55 @@
 
 #ifndef ROUTINGALGORITHMS_GRAPH_H
 #define ROUTINGALGORITHMS_GRAPH_H
-#define tam_fila 100
-#define maxIPs 10
-
-#endif //ROUTINGALGORITHMS_GRAPH_H
-
-//EDs para nó e grafo
-//----------------------------------
-
 
 /**
- * Tipos:
- * PC
- * Router
- * Server
-*/
-struct maquina {
-    int IP; // IP da maquina
-    int nPackage; // Numero de packages que conecta
-	char tipo[6]; // Tipo da maquina
-	Package vertices; // Conexoes
-    Package contido; // Contido na maquina atual, apenas 1 por vez 
-};
+ * Estrutura do grafo para matriz de adjacencias
+ */
+typedef struct graph {
+  int numNodes;
+  int numEdges;
+  int **matrix;
+} graph_t;
 
-typedef struct maquina *Maquina;
+/**
+ * Estrutura do grafo em formato de arestas
+ */
+typedef struct edge {
+  int source;
+  int destination;
+  int weight;
+} edge_t;
 
-static int IPAtual = "192 168 0 00";
-//----------------------------------
+/**
+ * Função para inicializar o grafo com base em um arquivo
+ * @return Retorna o grafo
+ */
+graph_t *initialize_graph(const char *filename);
 
-//Implementação das funções/operações
-//----------------------------------
-Package criaPackage (int id, char *commit, int tempo, int IPDestino, int peso);
-void addPackage (Package n, int id, char *commit, int tempo, int IPDestino, int peso);
-void imprimePackage(Package n);
-Maquina criaMaquina(char *tipo);
-int **readMaquina(char *nomeArq);
-void printMaquina(Maquina G);
-//----------------------------------
+/**
+ * Função para printar o grafo
+ * @param graph Grafo para ser printado
+ */
+void print_graph(graph_t *graph);
+
+/**
+ * Função para liberar a memória do grafo
+ * @param graph Grafo que será liberado
+ */
+void free_graph(graph_t *graph);
+
+/**
+ * Função para inicializar uma matriz NxN, com as distancias infinitas
+ * @param Tamanho da matriz
+ * @return Matriz criada
+ */
+int **initialize_matrix(int n);
+
+/**
+ * Função que transforma o grafo em arestas
+ * @param graph Grafo para ser transformado
+ * @return Vetor de arestas
+ */
+edge_t *graph_to_edges(graph_t *graph);
+
+#endif // ROUTINGALGORITHMS_GRAPH_H

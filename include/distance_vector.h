@@ -5,14 +5,8 @@
 #ifndef ROUTINGALGORITHMS_DISTANCE_VECTOR_H
 #define ROUTINGALGORITHMS_DISTANCE_VECTOR_H
 
-/**
- * Estrurura referente as arestas do grafo
- */
-struct Edge {
-    int source;
-    int destination;
-    int weight;
-};
+#include "graph.h"
+#include "package.h"
 
 /**
  * Função para incializar as arestas do grafo
@@ -39,7 +33,7 @@ void printRoutingTable(int distances[], int predecessors[], int numNodes);
  * @param numEdges Número de arestas
  * @param packageWeight Peso do pacote
  */
-void updateWeight(struct Edge edges[], int source, int destination, int numEdges, int packageWeight);
+void updateWeight(edge_t edges[], int source, int destination, int numEdges, int packageWeight);
 
 /**
  * Função para printar o caminho que o pacote faz da origem até o destino
@@ -49,7 +43,7 @@ void updateWeight(struct Edge edges[], int source, int destination, int numEdges
  * @param numEdges Número de arestas
  * @param packageWeight Peso do pacote
  */
-void printPath(struct Edge edges[], int predecessors[], int destinationNode, int numEdges, int packageWeight);
+void printPath(edge_t edges[], int predecessors[], int destinationNode, int numEdges, int packageWeight);
 
 /**
  * Função principal para calcular o caminho mínimo pelo algoritimo distance vector
@@ -59,6 +53,14 @@ void printPath(struct Edge edges[], int predecessors[], int destinationNode, int
  * @param sourceNode Nó de origem
  * @param destinationNode Nó de destino
  */
-void distanceVector(struct Edge edges[], int numEdges, int numNodes, int sourceNode, int destinationNode);
+void distanceVector(edge_t edges[], int numEdges, int numNodes, package_t *package);
+
+/**
+ * Função para inicializar o distance vector a partir de um grafo
+ * @param num_packages Número de pacotes
+ * @param package Pacote
+ * @param graph Grafo da rede
+ */
+void prepareDistanceVector(int num_packages, package_t *package, graph_t *graph);
 
 #endif //ROUTINGALGORITHMS_DISTANCE_VECTOR_H

@@ -8,7 +8,6 @@ void link_state(int routers,int matrix[][routers], package_t *packages,  int num
 
     for (i = 0; i < number_packages; i++)
     {
-
         printMatrix(routers, matrix);
         dijkstra(routers, matrix, packages[i]);
     }
@@ -24,8 +23,10 @@ void dijkstra(int routers, int matrix[][routers],  package_t package)
     int previous[routers];
     int visited[routers];
     int last_visited;
-    int origin = package.source_ip->key;
-    int destination = package.destination_ip->key;
+    //int origin = package.source_ip->key;
+    //int destination = package.destination_ip->key;
+    int origin = ip_to_key(package.source_ip);
+    int destination = ip_to_key(package.destination_ip);
     int i, j, k;
 
     /*for(i=0; i < routers; i++)
