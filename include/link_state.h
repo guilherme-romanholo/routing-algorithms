@@ -4,36 +4,42 @@
 
 #ifndef ROUTINGALGORITHMS_LINK_STATE_H
 #define ROUTINGALGORITHMS_LINK_STATE_H
-
-#include "../../include/router.h"
-#include "../../include/package.h"
+#include "ip.h"
+#include "package.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include <limits.h>
 
 /**
  * Builder do link_state, chamando o algoritmo para cada pacote que o usuário deseja enviar.
  * e imprimindo a matriz de adjacência para mostrar o estado da rede após o envio do pacote.
- * @param origem
- * @param destino
+ * @param origin
+ * @param destination
  * @param packages
- * @param num_roteadores
- * @param num_pacotes
+ * @param routers
+ * @param number_packages
  */
-void link_state(router_t *origem, router_t *destino, package_t *packages, int num_roteadores, int num_pacotes);
+void link_state(int routers,int matrix[][routers], package_t *packages,  int number_packages);
 
 /**
  * Algoritmo que calcula o menor caminho entre a origem e o destino, mostrando o menor caminho
  * e posteriormente atualizando os pesos no grafo.
- * @param origem
- * @param destino
- * @param numero_roteadores
+ * @param origin
+ * @param destination
+ * @param routers
  */
-void dijkstra(router_t *origem, router_t *destino, int numero_roteadores, package_t pacote);
+void dijkstra(int routers, int matrix[][routers],  package_t package);
 
 /**
  * Imprime a matriz de adjacência que representa a rede.
  * @param matrix
  */
-void imprimirMatrizAdjacencia(int **matrix);
+void printMatrix(int routers, int matrix[][routers]);
 
+/**
+ * Imprime o caminho encontrado no djikistra
+ * @param path
+ * @param count
+ */
+void print_path(int *path, int count);
 #endif //ROUTINGALGORITHMS_LINK_STATE_H
