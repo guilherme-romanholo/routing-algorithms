@@ -10,6 +10,7 @@ double prepareDistanceVector (graph_t *G, package_t *packages, int nPackages) {
   edge_t *edges = graph_to_edges(G);
 
   clock_t begin = clock();
+  printf("========== DISTANCE VECTOR ========== \n");
 
   for (int i = 0; i < nPackages; i++)
     distanceVector (edges, G->numEdges, G->numNodes, packages);
@@ -23,24 +24,14 @@ double prepareDistanceVector (graph_t *G, package_t *packages, int nPackages) {
 }
 
 double prepareLinkState(graph_t *G, package_t *packages, int nPackages){
-  //package_t packages[nPackages];
-  //int matriz[4][4] = {
-  //      {0, 1, 3, 0},
-  //      {0, 0, 1, 0},
-  //      {0, 0, 0, 0},
-  //      {2, 0, 0, 0}
-  //  };
 
-  //for (int i = 0;  i < nPackages; i++){
-  //  packages[i].source_ip = source;
-  //  packages[i].destination_ip = dest;
-  //  packages[i].size = package_size;
-  //}
 
   clock_t begin = clock();
+
+  printf("========== LINK STATE ========== \n");
   link_state (G, packages,  nPackages);
 
-  return (double)(clock() - begin) / CLOCKS_PER_SEC;
+    return (double)(clock() - begin) / CLOCKS_PER_SEC;
 }
 
 void selectHost(graph_t *G, int nPackages){
@@ -64,11 +55,13 @@ void selectHost(graph_t *G, int nPackages){
   // Contar tempo total execução
   clock_t begin = clock();
   double timeLinkState = prepareLinkState(G, packages, nPackages);
-  //double timeDistanceVector = prepareDistanceVector(G, packages, nPackages);
+    free_graph(G);
+    graph_t *h = initialize_graph("/home/willao/Documentos/GitHub/RoutingAlgorithms/src/graph/graph_1.txt");
+    double timeDistanceVector = prepareDistanceVector(h, packages, nPackages);
 
   // Imprime as diferenças
-  printf("Tempo de execucao Link State(ms): %.2f\n", timeLinkState * 1000);
-  //printf("Tempo execucao Distance Vector(ms): %.2f\n", timeDistanceVector * 1000);
+  printf("Tempo de e1xecucao Link State(ms): %.2f\n", timeLinkState * 1000);
+  printf("Tempo execucao Distance Vector(ms): %.2f\n", timeDistanceVector * 1000);
   printf("Tempo total de execucao(ms): %.2f\n", (double)((clock()-begin) * 1000) / CLOCKS_PER_SEC);  
 }
 

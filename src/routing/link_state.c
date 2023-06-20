@@ -36,18 +36,7 @@ void dijkstra(graph_t *G,  package_t *package)
     int destination = ip_to_key(package->destination_ip);
     int i, j, k;
 
-    /*for(i=0; i < routers; i++)
-    {
-        for(j=0;j<routers;j++)
-        {
-            if(*matrix[i][j] > 0)
-            {
-                cost[i][j] = *matrix[i][j];
-            }
-            else
-                cost[i][j] = INT_MAX;
-        }
-    }*/
+
 
     for (i = 0; i < G->numNodes; i++)
     {
@@ -109,7 +98,18 @@ void dijkstra(graph_t *G,  package_t *package)
         G->matrix[j][k] += package->size;
     }
 
-   print_path(path, count);
+    printf("Caminho mínimo do nó ");
+    print_ip(key_to_ip(0));
+    printf("(0) até o nó ");
+    print_ip(key_to_ip(destination));
+    printf(" (%d) \n", destination);
+
+    printf("Caminho: ");
+
+    print_path(path, count);
+
+    printf("Distância: %d \n \n", distance[destination]);
+
 }
 
 
@@ -117,7 +117,8 @@ void print_path(int *path, int count)
 {
     while (count--)
     {
-        printf("%d", path[count]);
+        print_ip(key_to_ip(path[count]));
+        printf("(%d)", path[count]);
         if(count)
             printf("->");
     }
