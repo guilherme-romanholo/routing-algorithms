@@ -76,7 +76,7 @@ void printPath(edge_t edges[], int predecessors[], int destinationNode,
   printf(" (%d) ", destinationNode);
 }
 
-void distanceVector (edge_t edges[], int numEdges, int numNodes,
+void distanceVector(edge_t edges[], int numEdges, int numNodes,
                     package_t *package) {
   // Define os vetor de distância e de predecessores
   int distances[MAX_NODES];
@@ -129,4 +129,17 @@ void distanceVector (edge_t edges[], int numEdges, int numNodes,
   printf("\nDistância: %d\n", distances[ip_to_key(package->destination_ip)]);
 }
 
+// Passar os pacotes aqui
+void prepareDistanceVector(int num_packages, package_t *package,
+                           graph_t *graph) {
+  // Exemplo de grafo que será montado a partir do arquivo
+  edge_t *edges = graph_to_edges(graph);
 
+  // Número de arestas continua calculando assim
+  int numEdges = graph->numEdges;
+  // Número de nós obtemos a partir do arquivo
+  int numNodes = graph->numNodes;
+
+  for (int i = 0; i < num_packages; i++)
+    distanceVector(edges, numEdges, numNodes, package);
+}

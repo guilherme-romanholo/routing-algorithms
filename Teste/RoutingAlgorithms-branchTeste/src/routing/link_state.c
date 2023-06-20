@@ -6,17 +6,12 @@ void link_state(int routers,int matrix[][routers], package_t *packages,  int num
 {
     int i;
 
-    clock_t begin = clock();
-
     for (i = 0; i < number_packages; i++)
     {
         printMatrix(routers, matrix);
         dijkstra(routers, matrix, packages[i]);
     }
     printMatrix(routers, matrix);
-    
-
-    //return clock();
 }
 
 void dijkstra(int routers, int matrix[][routers],  package_t package)

@@ -1,57 +1,111 @@
 #include <stdio.h>
+#include <time.h>
 #include "../../include/link_state.h"
 #include "../../include/graph.h"
 #include "../../include/distance_vector.h"
+#define package_size 5
 
-void main2() {
-  printf("TUBARAO TE AMO \n");
+double prepareDistanceVector (graph_t *G, package_t *packages, int nPackages) {    
+  // Exemplo de grafo que será montado a partir do arquivo
+  edge_t *edges = graph_to_edges(G);
 
-  package_t *package;
-  ip_t *source, *dest;
+  clock_t begin = clock();
 
-  source = key_to_ip(0);
-  dest = key_to_ip(2);
-  
-  package = initialize_package(source, dest, 5);
-  
-  graph_t *graph = initialize_graph("../../data/graph_1.txt");
-  
-  prepareDistanceVector(2, package, graph);
+  for (int i = 0; i < nPackages; i++)
+    distanceVector (edges, G->numEdges, G->numNodes, packages);
 
-  free_graph(graph);
-  free(source);
-  free(dest);
-  free(package);
+  clock_t end = clock();
+
+  free_graph(G);
+  free(packages);
+
+  return (end - begin) / CLOCKS_PER_SEC;
 }
 
-
-int main() {
-    printf("TUBARAO TE AMO \n");
-
-    int matriz[4][4] = {
+double prepareLinkState(ip_t *source, ip_t *dest, int nPackages){
+  package_t packages[nPackages];
+  int matriz[4][4] = {
         {0, 1, 3, 0},
         {0, 0, 1, 0},
         {0, 0, 0, 0},
         {2, 0, 0, 0}
     };
 
-    package_t packages[2];
-    ip_t *source, *dest;
+  for (int i = 0;  i < nPackages; i++){
+    packages[i].source_ip = source;
+    packages[i].destination_ip = dest;
+    packages[i].size = package_size;
+  }
 
-    source = key_to_ip(0);
-    dest = key_to_ip(2);
+  clock_t begin = clock();
+  link_state (4, matriz, packages,  nPackages);
 
-    packages[0].source_ip = source;
-    packages[0].destination_ip = dest;
-    packages[0].size = 1;
+  return (double)(clock() - begin) / CLOCKS_PER_SEC;
+}
 
-    packages[1].source_ip = source;
-    packages[1].destination_ip = dest;
-    packages[1].size = 1;
+void selectHost(graph_t *G, int nPackages){
+  // Mensagem inicial
+  int oct4;
+  printf("Escolha o IP para quem deseja enviar a mensagem (apenas o final).\n");
+  scanf("%d", &oct4); // Se numero > 256, automaticamente troca a rede
 
-    link_state( 4, matriz, packages,  2);
+  // Inicializacao dos Packages
+  package_t *packages = malloc (nPackages * sizeof(package_t));
+  ip_t *source, *dest;
 
-    main2();
+  source = key_to_ip(0);
+  dest = key_to_ip(oct4);
+
+  for (int i = 0; i < nPackages; i++)
+    packages = initialize_package(source, dest, package_size);
+
+  // Matriz estatica pro link state
+
+  // Contar tempo total execução
+  clock_t begin = clock();
+  double timeLinkState = prepareLinkState(source, dest, nPackages);
+  double timeDistanceVector = prepareLinkState(source, dest, nPackages);
+
+  // Imprime as diferenças
+  printf("Tempo de execucao Link State(ms): %.2f\n", timeLinkState * 1000);
+  printf("Tempo execucao Distance Vector(ms): %.2f\n", timeDistanceVector * 1000);
+  printf("Tempo total de execucao(ms): %.2f\n", (double)((clock()-begin) * 1000) / CLOCKS_PER_SEC);  
+}
+
+int main() {
+    printf("===== Seja Bem-Vindo =====\n");
+    int opt;
+
+    graph_t *G = initialize_graph("../../data/graph_1.txt");
+    
+    do {
+        
+        printf("======== OPERACOES ========\n");
+        printf("1. Enviar mensagem\n"); // Computer <-> Server
+        printf("2. Acessar site\n"); // Computer <-> Server
+        printf("3. Voltar\n");
+        printf("==========================\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opt);
+
+        switch (opt) {
+            case 1:
+                printf("Você escolheu a opcao Enviar Mensagem.\n");
+                selectHost(G, 5);
+                break;
+            case 2:
+                printf("Você escolheu a opcao Acessar Site.\n");
+                selectHost(G, 20);
+                break;
+            case 3:
+                return 0;   
+            default:
+                printf("Opcao invalida! Tente novamente.\n");
+                break;
+        }
+
+        printf("\n");
+    } while (opt != 3);
 
     return 0;
 }

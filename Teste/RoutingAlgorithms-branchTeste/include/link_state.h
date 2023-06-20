@@ -9,7 +9,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <limits.h>
-#include <time.h>
 
 /**
  * Builder do link_state, chamando o algoritmo para cada pacote que o usuário deseja enviar.
@@ -19,7 +18,6 @@
  * @param packages
  * @param routers
  * @param number_packages
- * @return End time of execution
  */
 void link_state(int routers,int matrix[][routers], package_t *packages,  int number_packages);
 

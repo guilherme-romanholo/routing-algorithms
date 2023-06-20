@@ -55,4 +55,12 @@ void printPath(edge_t edges[], int predecessors[], int destinationNode, int numE
  */
 void distanceVector(edge_t edges[], int numEdges, int numNodes, package_t *package);
 
+/**
+ * Função para inicializar o distance vector a partir de um grafo
+ * @param num_packages Número de pacotes
+ * @param package Pacote
+ * @param graph Grafo da rede
+ */
+void prepareDistanceVector(int num_packages, package_t *package, graph_t *graph);
+
 #endif //ROUTINGALGORITHMS_DISTANCE_VECTOR_H
