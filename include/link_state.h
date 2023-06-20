@@ -31,7 +31,7 @@ void link_state(graph_t *G, package_t *packages,  int number_packages);
  * @param destination
  * @param routers
  */
- void dijkstra(graph_t *G,  package_t package);
+ void dijkstra(graph_t *G,  package_t *package);
 //void dijkstra(int routers, int matrix[][routers],  package_t package);
 
 /**

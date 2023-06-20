@@ -11,16 +11,18 @@ void link_state(graph_t *G, package_t *packages,  int number_packages)
     for (i = 0; i < number_packages; i++)
     {
         //printMatrix(G->numNodes, G->matrix);
-        printMatrix(G);
-        dijkstra(G, packages[i]);
+        dijkstra(G, packages);
     }
     //printMatrix(G->numNodes, G->matrix);
     
     //return clock();
 }
 
-void dijkstra(graph_t *G,  package_t package)
+void dijkstra(graph_t *G,  package_t *package)
 {
+
+
+
     // int cost[routers][routers];
     int count, mindistance;
     int distance[G->numNodes];
@@ -30,8 +32,8 @@ void dijkstra(graph_t *G,  package_t package)
     int last_visited;
     //int origin = package.source_ip->key;
     //int destination = package.destination_ip->key;
-    int origin = ip_to_key(package.source_ip);
-    int destination = ip_to_key(package.destination_ip);
+    int origin = ip_to_key(package->source_ip);
+    int destination = ip_to_key(package->destination_ip);
     int i, j, k;
 
     /*for(i=0; i < routers; i++)
@@ -82,7 +84,7 @@ void dijkstra(graph_t *G,  package_t package)
         {
             if (visited[i] == 0)
             {
-                if (G->matrix[last_visited][i] > 0 && mindistance + G->matrix[last_visited][i] < distance[i])
+                if (G->matrix[last_visited][i] < INT_MAX && mindistance + G->matrix[last_visited][i] < distance[i])
                 {
                     distance[i] = mindistance + G->matrix[last_visited][i];
                     previous[i] = last_visited;
@@ -104,40 +106,12 @@ void dijkstra(graph_t *G,  package_t package)
     {
         j = path[i];
         k = path[i - 1];
-        G->matrix[j][k] += package.size;
+        G->matrix[j][k] += package->size;
     }
 
-    print_path(path, count);
+   print_path(path, count);
 }
 
-//void printMatrix(int routers, int matrix[][routers])
-//{
-//    int i, j;
-//    for (i = 0; i < routers; i++)
-//    {
-//        for (j = 0; j < routers; j++)
-//        {
-//            printf("%d ", matrix[i][j]);
-//        }
-//        printf("\n");
-//    }
-//    printf("\n");
-//    printf("\n");
-//}
-
-void printMatrix(graph_t *G){
-    int i, j;
-    for (i = 0; i < G->numNodes; i++)
-    {
-        for (j = 0; j < G->numNodes; j++)
-        {
-            printf("%d ", G->matrix[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    printf("\n");
-}
 
 void print_path(int *path, int count)
 {

@@ -76,8 +76,8 @@ int main() {
     printf("===== Seja Bem-Vindo =====\n");
     int opt;
 
-    graph_t *G = initialize_graph("../../data/graph_1.txt");
-    
+    graph_t *G = initialize_graph("/home/willao/Documentos/GitHub/RoutingAlgorithms/src/graph/graph_1.txt");
+
     do {
         
         printf("======== OPERACOES ========\n");
