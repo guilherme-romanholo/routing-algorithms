@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="RoutingAlgorithms"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RoutingAlgorithms">
+				<Option output="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/RoutingAlgorithms" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 RoutingAlgorithms"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RoutingAlgorithms/fast">
+				<Option output="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/RoutingAlgorithms" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 RoutingAlgorithms/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/guilherme/GitHub/RoutingAlgorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/data/graph_1.txt">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/include/distance_vector.h">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/include/graph.h">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/include/ip.h">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/include/link_state.h">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/include/package.h">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/src/components/ip.c">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/src/components/package.c">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/src/graph/graph.c">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/src/main/main.c">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/src/routing/distance_vector.c">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/src/routing/link_state.c">
+			<Option target="RoutingAlgorithms"/>
+		</Unit>
+		<Unit filename="/home/guilherme/GitHub/RoutingAlgorithms/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

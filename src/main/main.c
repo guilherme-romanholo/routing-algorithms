@@ -55,9 +55,9 @@ void selectHost(graph_t *G, int nPackages){
   // Contar tempo total execução
   clock_t begin = clock();
   double timeLinkState = prepareLinkState(G, packages, nPackages);
-    free_graph(G);
-    graph_t *h = initialize_graph("/home/willao/Documentos/GitHub/RoutingAlgorithms/src/graph/graph_1.txt");
-    double timeDistanceVector = prepareDistanceVector(h, packages, nPackages);
+  free_graph(G);
+  graph_t *h = initialize_graph("/home/guilherme/GitHub/RoutingAlgorithms/data/graph_1.txt");
+  double timeDistanceVector = prepareDistanceVector(h, packages, nPackages);
 
   // Imprime as diferenças
   printf("Tempo de e1xecucao Link State(ms): %.2f\n", timeLinkState * 1000);
@@ -69,7 +69,7 @@ int main() {
     printf("===== Seja Bem-Vindo =====\n");
     int opt;
 
-    graph_t *G = initialize_graph("/home/willao/Documentos/GitHub/RoutingAlgorithms/src/graph/graph_1.txt");
+    graph_t *G = initialize_graph("/home/guilherme/GitHub/RoutingAlgorithms/data/graph_1.txt");
 
     do {
         
