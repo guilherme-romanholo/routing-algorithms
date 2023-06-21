@@ -6,6 +6,7 @@
 #define ROUTINGALGORITHMS_LINK_STATE_H
 #include "ip.h"
 #include "package.h"
+#include "graph.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include <limits.h>
@@ -21,7 +22,7 @@
  * @param number_packages
  * @return End time of execution
  */
-void link_state(int routers,int matrix[][routers], package_t *packages,  int number_packages);
+void link_state(graph_t *G, package_t *packages,  int number_packages);
 
 /**
  * Algoritmo que calcula o menor caminho entre a origem e o destino, mostrando o menor caminho
@@ -30,13 +31,15 @@ void link_state(int routers,int matrix[][routers], package_t *packages,  int num
  * @param destination
  * @param routers
  */
-void dijkstra(int routers, int matrix[][routers],  package_t package);
+ void dijkstra(graph_t *G,  package_t *package);
+//void dijkstra(int routers, int matrix[][routers],  package_t package);
 
 /**
  * Imprime a matriz de adjacência que representa a rede.
  * @param matrix
  */
-void printMatrix(int routers, int matrix[][routers]);
+ void printMatrix(graph_t *G);
+//void printMatrix(int routers, int matrix[][routers]);
 
 /**
  * Imprime o caminho encontrado no djikistra

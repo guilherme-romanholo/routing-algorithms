@@ -11,7 +11,7 @@ graph_t *initialize_graph(const char *filename) {
 
   fscanf(fp, "%d", &(graph->numNodes));
 
-  graph->matrix = initialize_matrix(graph->numNodes);
+graph->matrix = initialize_matrix(graph->numNodes);
   graph->numEdges = 0;
 
   while (fscanf(fp, "%d %d %d", &source, &destination, &weight) != EOF){

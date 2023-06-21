@@ -2,7 +2,7 @@
 
 #include "../../include/link_state.h"
 
-void link_state(int routers,int matrix[][routers], package_t *packages,  int number_packages)
+void link_state(graph_t *G, package_t *packages,  int number_packages)
 {
     int i;
 
@@ -10,48 +10,39 @@ void link_state(int routers,int matrix[][routers], package_t *packages,  int num
 
     for (i = 0; i < number_packages; i++)
     {
-        printMatrix(routers, matrix);
-        dijkstra(routers, matrix, packages[i]);
+        //printMatrix(G->numNodes, G->matrix);
+        dijkstra(G, packages);
     }
-    printMatrix(routers, matrix);
+    //printMatrix(G->numNodes, G->matrix);
     
-
     //return clock();
 }
 
-void dijkstra(int routers, int matrix[][routers],  package_t package)
+void dijkstra(graph_t *G,  package_t *package)
 {
+
+
+
     // int cost[routers][routers];
     int count, mindistance;
-    int distance[routers];
-    int path[routers];
-    int previous[routers];
-    int visited[routers];
+    int distance[G->numNodes];
+    int path[G->numNodes];
+    int previous[G->numNodes];
+    int visited[G->numNodes];
     int last_visited;
     //int origin = package.source_ip->key;
     //int destination = package.destination_ip->key;
-    int origin = ip_to_key(package.source_ip);
-    int destination = ip_to_key(package.destination_ip);
+    int origin = ip_to_key(package->source_ip);
+    int destination = ip_to_key(package->destination_ip);
     int i, j, k;
 
-    /*for(i=0; i < routers; i++)
-    {
-        for(j=0;j<routers;j++)
-        {
-            if(*matrix[i][j] > 0)
-            {
-                cost[i][j] = *matrix[i][j];
-            }
-            else
-                cost[i][j] = INT_MAX;
-        }
-    }*/
 
-    for (i = 0; i < routers; i++)
+
+    for (i = 0; i < G->numNodes; i++)
     {
-        if (matrix[origin][i] > 0)
+        if (G->matrix[origin][i] > 0)
         {
-            distance[i] = matrix[origin][i];
+            distance[i] = G->matrix[origin][i];
         }
         else
         {
@@ -65,10 +56,10 @@ void dijkstra(int routers, int matrix[][routers],  package_t package)
     visited[origin] = 1;
     count = 1;
 
-    while (count < routers - 1)
+    while (count < G->numNodes - 1)
     {
         mindistance = INT_MAX;
-        for (i = 0; i < routers; i++)
+        for (i = 0; i < G->numNodes; i++)
         {
             if (distance[i] < mindistance && visited[i] == 0)
             {
@@ -78,13 +69,13 @@ void dijkstra(int routers, int matrix[][routers],  package_t package)
         }
         visited[last_visited] = 1;
 
-        for (i = 0; i < routers; i++)
+        for (i = 0; i < G->numNodes; i++)
         {
             if (visited[i] == 0)
             {
-                if (matrix[last_visited][i] > 0 && mindistance + matrix[last_visited][i] < distance[i])
+                if (G->matrix[last_visited][i] < INT_MAX && mindistance + G->matrix[last_visited][i] < distance[i])
                 {
-                    distance[i] = mindistance + matrix[last_visited][i];
+                    distance[i] = mindistance + G->matrix[last_visited][i];
                     previous[i] = last_visited;
                 }
             }
@@ -104,32 +95,30 @@ void dijkstra(int routers, int matrix[][routers],  package_t package)
     {
         j = path[i];
         k = path[i - 1];
-        matrix[j][k] += package.size;
+        G->matrix[j][k] += package->size;
     }
+
+    printf("Caminho mínimo do nó ");
+    print_ip(key_to_ip(0));
+    printf("(0) até o nó ");
+    print_ip(key_to_ip(destination));
+    printf(" (%d) \n", destination);
+
+    printf("Caminho: ");
 
     print_path(path, count);
+
+    printf("Distância: %d \n \n", distance[destination]);
+
 }
 
-void printMatrix(int routers, int matrix[][routers])
-{
-    int i, j;
-    for (i = 0; i < routers; i++)
-    {
-        for (j = 0; j < routers; j++)
-        {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    printf("\n");
-}
 
 void print_path(int *path, int count)
 {
     while (count--)
     {
-        printf("%d", path[count]);
+        print_ip(key_to_ip(path[count]));
+        printf("(%d)", path[count]);
         if(count)
             printf("->");
     }

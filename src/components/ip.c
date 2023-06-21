@@ -28,7 +28,7 @@ void print_ip(ip_t *ip) {
 int ip_to_key(ip_t *ip) { return ((ip->oct3 * 255) + ip->oct4 + ip->oct3); }
 
 ip_t *key_to_ip(int key) {
-  ip_t *ip = malloc(sizeof(ip_t));
+    ip_t *ip = malloc(sizeof (ip_t));
 
   ip->oct1 = MASK_1;
   ip->oct2 = MASK_2;
