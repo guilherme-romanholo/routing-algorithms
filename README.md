@@ -17,16 +17,15 @@
 ## TODO
 
 ### Implementação dos componentes da rede
-- [ ] Hosts (Computadores)
 - [ ] Pacote Transmitido
 - [ ] Roteadores
+- [ ] IP
 
 ### Grafo
 - [ ] Grafo para os roteadores da rede
 
 ### Interface
 - [ ] Interface normal de um terminal
-- [ ] Interface usando ncurses (Boa sorte Leoni!!!!)
 
 ### Algoritmos de roteamento
 - [ ] Distance Vector
@@ -48,7 +47,3 @@
 - Se der tempo, o Adriano deu a ideia de falar sobre o problema de contagem ao infinito do algoritmo
   distance vector, que acontece quando existe uma falha na topologia da rede e as informações do
   roteamento não são atualizadas corretamente (contagem incorreta de saltos até o destino).
-
-## Slides interessantes sobre os algoritmos de roteamento 
-- https://homepages.dcc.ufmg.br/~jmarcos/cursos/redes/Telecom2008/cap04a-Camada-de-Rede.pdf
-- Obs: Não precisa ler tudo, tem algumas coisas que não são necessárias para o projeto.
